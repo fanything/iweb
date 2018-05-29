@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true">
     <!-- 项目名称 -->
-    <property name="PROJECT_NAME" value="springBootTemplate" />
-
+    <!--<property name="PROJECT_NAME" value="iweb-api" />-->
+    <springProperty scope="context" name="PROJECT_NAME" source="spring.application.name"/>
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="LOG_HOME" value="${catalina.base}/logs" />
+    <!--<property name="LOG_HOME" value="${log.path}/logs" />-->
+    <!--使用springProperty获取application*.yml中配置的属性-->
+    <springProperty scope="context" name="LOG_HOME" source="logback.path"/>
 
     <!-- 控制台输出 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
