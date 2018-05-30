@@ -1,4 +1,4 @@
-package com.iweb.app;
+package com.iweb.api;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
