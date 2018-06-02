@@ -5,6 +5,9 @@
 */
 package com.iweb.common.util;
 
+import com.iweb.common.exception.IBusinessException;
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +16,7 @@ import java.util.Map;
  * @Date: 2018-05-15 下午 04:19
  * @Description:
  */
+@Slf4j
 public class RestResultUtil {
 	private static final String DATA = "data";
 	private static final String MESSAGE_KEY = "message";
@@ -65,5 +69,19 @@ public class RestResultUtil {
 		map.put(CODE_KEY, code);
 		map.put(MESSAGE_KEY, message);
 		return map;
+	}
+
+	/**
+	 * 将异常转换为错误信息
+	 *
+	 * @param th 异常
+	 * @return 错误信息json对象
+	 */
+	public static Map<String, Object> toMap(final Throwable th) {
+		if (th instanceof IBusinessException) {
+			return error(StatusCode.FAIL.key(),ExceptionUtil.getSimpleMessage(th));
+		}
+		log.error(ExceptionUtil.getSimpleMessage(th),th);
+		return error(StatusCode.FAIL.key(),ExceptionUtil.getSimpleMessage(th));
 	}
 }

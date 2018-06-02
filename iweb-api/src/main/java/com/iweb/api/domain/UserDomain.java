@@ -15,4 +15,8 @@ public class UserDomain {
         userMapper.insert(user);
         return user;
     }
+
+    public Object get(Integer userId) {
+        return userMapper.selectById(userId);
+    }
 }

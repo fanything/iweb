@@ -4,9 +4,7 @@ import com.iweb.api.entity.User;
 import com.iweb.api.service.UserService;
 import com.iweb.context.annotation.RestCode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -17,8 +15,14 @@ public class UserController {
 
     @RestCode
     @PostMapping("")
-    public Object add(User user){
+    public Object add(@RequestBody User user){
         userService.add(user);
         return "ok";
+    }
+
+    @RestCode
+    @GetMapping("")
+    public Object get(@RequestParam("userId") int userId){
+        return userService.get(userId);
     }
 }
