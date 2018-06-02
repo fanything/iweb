@@ -25,4 +25,10 @@ public class UserController {
     public Object get(@RequestParam("userId") int userId){
         return userService.get(userId);
     }
+
+    @RestCode
+    @GetMapping("/list")
+    public Object list(@RequestParam("currentPage") int currentPage){
+        return userService.list(currentPage);
+    }
 }

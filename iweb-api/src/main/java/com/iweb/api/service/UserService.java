@@ -20,4 +20,8 @@ public class UserService {
     public Object get(Integer userId) {
         return userDomain.get(userId);
     }
+
+    public Object list(Integer currentPage) {
+        return userDomain.list(currentPage);
+    }
 }
