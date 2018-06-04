@@ -157,4 +157,5 @@ public final class ConvertUtil {
 		Integer a = 1;
 		System.out.print(ConvertUtil.obj2str(a));
 	}
+
 }

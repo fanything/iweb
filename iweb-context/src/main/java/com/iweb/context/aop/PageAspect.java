@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 
+import com.iweb.common.util.ConvertUtil;
 import com.iweb.common.util.MapUtil;
 import com.iweb.common.util.Util;
 import com.iweb.context.page.Page;
@@ -27,7 +28,7 @@ import org.springframework.stereotype.Component;
 @Order(3)
 public class PageAspect {
 
-	@Value("#{configProperties['pageSize']}")
+	@Value("${pagination.pageSize}")
 	private String pageSize;
 
 	/**
@@ -66,7 +67,7 @@ public class PageAspect {
 		if (Util.isEmpty(page) || page.getPageSize() > 0) {
 			return;
 		}
-		page.setPageSize(ConvertUtil.obj2int(pageSize));
+		page.setPageSize(pageSize!=null ? Integer.parseInt(pageSize):0);
 	}
 
 	/**
