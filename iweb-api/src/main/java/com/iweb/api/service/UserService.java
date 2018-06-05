@@ -14,8 +14,6 @@ public class UserService {
     private UserDomain userDomain;
 
     public void add(User user){
-        String aa = null;
-        aa.trim();
         userDomain.insert(user);
     }
 

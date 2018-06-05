@@ -28,7 +28,7 @@ import org.springframework.stereotype.Component;
 @Order(3)
 public class PageAspect {
 
-	@Value("${pagination.pageSize}")
+	@Value("${pagination.pageSize:10}")
 	private String pageSize;
 
 	/**
