@@ -1,11 +1,6 @@
-/**
- * JsonReturnAspect.java
- * com.we.core.web.aop
- * Copyright (c) 2017, 北京聚智未来科技有限公司版权所有.
-*/
-
 package com.iweb.context.aop;
 
+import com.alibaba.fastjson.JSON;
 import com.iweb.common.util.RestResultUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -15,6 +10,10 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
 /**
@@ -32,7 +31,11 @@ public class RestCodeAspect {
 		Object list = pjp.proceed();
 
 		if (isReturnVoid(pjp)) {
-			return RestResultUtil.success("成功");
+			HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+					.getResponse();
+			response.setContentType("application/json;charset=UTF-8");
+			response.getWriter().write(JSON.toJSONString(RestResultUtil.success("成功")));
+			return list;
 		}
 
 		return RestResultUtil.data(list);
