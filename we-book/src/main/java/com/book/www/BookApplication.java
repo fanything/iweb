@@ -1,0 +1,26 @@
+package com.book.www;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+/**
+ * @Author:FanMingxin
+ * @Date: 2018-05-29 下午 08:52
+ * @Description:
+ */
+@Slf4j
+@ComponentScan({"com.iweb","com.book"})
+@SpringBootApplication
+public class BookApplication implements CommandLineRunner{
+    public static void main(String[] args) {
+        SpringApplication.run(BookApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        log.info("app is start...");
+    }
+}

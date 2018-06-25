@@ -12,6 +12,7 @@
         <module>iweb-common</module>
         <module>iweb-context</module>
         <module>iweb-api</module>
+        <module>we-book</module>
     </modules>
 
     <properties>
