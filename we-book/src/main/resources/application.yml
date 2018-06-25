@@ -3,6 +3,17 @@ spring:
     name: iweb-api
   profiles:
     active: dev
+  thymeleaf:
+      prefix: classpath:/templates/
+      cache: false
+      check-template-location: true
+      suffix: .html
+      encoding: UTF-8
+      servlet:
+        content-type: text/html
+      mode: HTML5
+      enabled: true
+
 server:
   port: 8001
 

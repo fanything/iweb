@@ -15,6 +15,6 @@ public class BookController {
 
     @GetMapping("/list")
     public Object list(@RequestParam("currentPage") int currentPage){
-        return "ok";
+        return "list";
     }
 }
