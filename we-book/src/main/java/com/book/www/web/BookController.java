@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("")
 public class BookController {
 
+    private static final int NODE_PAGE_SIZE=150;
+    private static final int DEFAULT_CURRENT_PAGE=1;
+
     @Autowired
     private BookService bookService;
 
@@ -30,8 +33,15 @@ public class BookController {
     }
 
     @GetMapping("/node/{bookId}")
-    public Object nodeList(@PathVariable("bookId")int bookId,@ModelAttribute("page") Page page,Model model){
-        model.addAttribute("page",bookService.nodeList(bookId,page));
+    public Object nodeList(@PathVariable("bookId")int bookId,Model model){
+        model.addAttribute("page",bookService.nodeList(bookId,new Page(DEFAULT_CURRENT_PAGE,NODE_PAGE_SIZE)));
+        model.addAttribute("book",bookService.detail(bookId));
+        return "nodelist";
+    }
+
+    @GetMapping("/node/{bookId}/p{currentPage}")
+    public Object nodeList(@PathVariable("bookId")int bookId,@PathVariable("currentPage")int currentPage,Model model){
+        model.addAttribute("page",bookService.nodeList(bookId,new Page(currentPage,NODE_PAGE_SIZE)));
         model.addAttribute("book",bookService.detail(bookId));
         return "nodelist";
     }

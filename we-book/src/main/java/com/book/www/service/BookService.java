@@ -52,6 +52,7 @@ public class BookService {
         List<Node> list = nodeMapper.selectPage(pagination,new EntityWrapper<Node>().allEq(param));
 
         page.setList(list);
+        page.setPageCount(pagination.getPages());
         return page;
     }
 

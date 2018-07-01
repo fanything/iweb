@@ -1,10 +1,5 @@
 package com.iweb.context.aop;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Optional;
-
-import com.iweb.common.util.ConvertUtil;
 import com.iweb.common.util.MapUtil;
 import com.iweb.common.util.Util;
 import com.iweb.context.page.Page;
@@ -16,6 +11,10 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * 分页切面
@@ -60,7 +59,7 @@ public class PageAspect {
 	 *
 	 * @param jp 切点
 	*/
-	@Before(value = "@annotation(org.springframework.web.bind.annotation.RequestMapping) || @annotation(org.springframework.web.bind.annotation.GetMapping) || @annotation(org.springframework.web.bind.annotation.PostMapping)")
+	@Before("@annotation(com.iweb.context.annotation.Pagination)")
 	@Order(1)
 	public void setDefaultPageSize(final JoinPoint jp) {
 		Page page = getPage(jp.getArgs());
