@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="${book.name}"></p>
+<p th:text="${book.author}"></p>
+<p th:text="${book.intro}"></p>
+<p th:text="${book.img}"></p>
+<p><a th:href="@{/node/{bookId}(bookId=${book.id})}">全部章节</a></p>
+</table>
+</body>
+</html>

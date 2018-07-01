@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/pagination.css}"/>
+    <script type="type/javascript" th:src="@{/js/jquery.min.js}"></script>
+</head>
+<body>
+<ul th:each="book:${page.list}">
+    <li>
+        <a th:href="@{/book/{id}(id=${book.id})}" th:text="${book.name}">书名</a>
+    </li>
+</ul>
+<input id="totalData" type="hidden" th:value="${page.totalCount}">
+<div class="M-box2"></div>
+</body>
+</html>
+<script type="type/javascript">
+    $(function(){
+        $('.M-box2').pagination({
+            coping: true,
+            homePage: '首页',
+            endPage: '末页',
+            prevContent: '上页',
+            nextContent: '下页',
+            totalData: $("#totalData").val(),
+            callback: function (api) {
+                $(location).attr('href', '/book/list?currentPage='+api.getCurrent());
+            }
+        });
+    });
+</script>

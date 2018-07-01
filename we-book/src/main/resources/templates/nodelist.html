@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" th:content="${book.name}">
+    <meta name="description" th:content="${book.intro}">
+    <title th:value="${book.name}">Title</title>
+    <link rel="stylesheet" th:href="@{/css/chapter-list.css}"/>
+</head>
+<body>
+
+<div id="app">
+    <div id="header">
+        <div class="readNav">
+            <span>当前位置：<a href="/">首页</a>><a href="/tongren/1/">言情·女生</a>><a th:href="@{/book/{bookId}(bookId=${book.id})}" th:text="${book.name}"></a>> <em> 章节列表</em></span>
+            <div class="search">
+                <div id="bdcs"></div>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <div class="title">
+            <h1 th:text="${book.name}"></h1>
+            <p class="info">
+                分类:<span><a href="javascript:;" >言情·女生</a></span>
+                作者:<span><a href="javascript:;" th:text="${book.author}"></a></span>
+            </p>
+        </div>
+        <div id="chapterList">
+            <ul class="clear" th:each="node:${page.list}">
+                <li>
+                    <a th:href="@{/node/{bookId}/{id}(bookId=${node.bookId},id=${node.id})}" th:text="${node.name}">章节名</a>
+                </li>
+            </ul>
+        </div>
+        <div class="jump ">
+            <a href="8273758.html" >上一页</a>
+            <a href="8273760.html" >下一页</a>
+        </div>
+
+        <div id="layout"></div>
+        <div id="footer">
+            <div class="copyright">
+                <p>本站所有小说为转载作品，所有章节均由网友提供，转载至本站只是为了宣传本书让更多读者欣赏。</p>
+                <p>Copyright 2018 All Rights Reserved </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

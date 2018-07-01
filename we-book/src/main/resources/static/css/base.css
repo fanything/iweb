@@ -1,0 +1,79 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+
+a{
+  text-decoration: none;
+  color: #333;
+}
+
+*{
+  font-family: "华文楷体", "方正启体简体", "微软雅黑", "宋体", Arial, serif;
+  box-sizing: border-box;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+html, body{
+  height: 100%;
+}
+
+#app{
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+body{
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 14px;
+}
+
+.clear:after{
+  display: block;
+  content: '';
+  clear: both;
+}
+
+#header{
+  padding-top: 10px;
+}
+
+.readNav{
+  font-size: 12px;
+  color: #737373;
+}
+.readNav a{
+  display: inline-block;
+  padding: 0 6px;
+  color: #737373;
+}
+
+#container{
+  padding: 20px 0;
+}
+
+#footer .copyright{
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  width: 100%;
+  padding: 6px 15px;
+  font-size: 12px;
+  text-align: center;
+  color: #737373;
+  line-height: 20px;
+  border-top: 1px solid #ccc;
+}
+

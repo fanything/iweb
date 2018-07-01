@@ -2,6 +2,8 @@ package com.iweb.context.page;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author fanmingxin
  * @description
@@ -31,10 +33,13 @@ public class Page {
      */
     private int pageCount;
 
+    private List list;
+
     public Page() {
     }
 
-    public Page(int pageSize) {
+    public Page(int currentPage,int pageSize) {
+        this.currentPage = currentPage;
         this.pageSize = pageSize;
     }
 }

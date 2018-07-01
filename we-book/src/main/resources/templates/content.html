@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" th:content="${node.keywords}">
+    <meta name="description" th:content="${node.intro}">
+    <title th:value="${node.name}">Title</title>
+    <link rel="stylesheet" th:href="@{/css/detail.css}"/>
+</head>
+<body>
+<div id="app">
+    <div id="header">
+        <div class="readNav">
+            <span>当前位置：<a href="/">首页</a>><a href="/tongren/1/">言情·女生</a>><a th:href="@{/book/{bookId}(bookId=${book.id})}" th:text="${book.name}"></a>> <em th:text="${node.name}"></em></span>
+            <div class="search">
+                <div id="bdcs"></div>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <div id="center">
+            <div class="title">
+                <h1 th:text="${node.name}"></h1>
+                <p class="info">作者:<span><a href="javascript:;" th:text="${book.author}"></a></span>字数:<span th:text="${node.wcount}"></span>更新时间:<span th:text="${node.createTime}"></span></p>
+            </div>
+            <div class="jump ">
+                <a th:href="@{/node/{bookId}/{id}(bookId=${node.bookId},id=${node.beforeId})}">上一章</a>
+                <a th:href="@{/node/{bookId}(bookId=${node.bookId})}">回目录</a>
+                <a th:href="@{/node/{bookId}/{id}(bookId=${node.bookId},id=${node.afterId})}">下一章</a></div>
+            <div class="content_ad top_b">
+            </div>
+            <div id="content" th:utext="${node.content}">
+            </div>
+            <div class="jump jumpbottom">
+                <a th:href="@{/node/{bookId}/{id}(bookId=${node.bookId},id=${node.beforeId})}">上一章</a>
+                <a th:href="@{/node/{bookId}(bookId=${node.bookId})}">回目录</a>
+                <a th:href="@{/node/{bookId}/{id}(bookId=${node.bookId},id=${node.afterId})}">下一章</a>
+            </div>
+        </div>
+
+        <div id="layout"></div>
+        <div id="footer">
+            <div class="copyright">
+                <p>本站所有小说为转载作品，所有章节均由网友提供，转载至本站只是为了宣传本书让更多读者欣赏。</p>
+                <p>Copyright 2018 All Rights Reserved </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
