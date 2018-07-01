@@ -27,8 +27,8 @@
             </p>
         </div>
         <div id="chapterList">
-            <ul class="clear" th:each="node:${page.list}">
-                <li>
+            <ul class="clear">
+                <li  th:each="node:${page.list}">
                     <a th:href="@{/node/{bookId}/{id}(bookId=${node.bookId},id=${node.id})}" th:text="${node.name}">章节名</a>
                 </li>
             </ul>
