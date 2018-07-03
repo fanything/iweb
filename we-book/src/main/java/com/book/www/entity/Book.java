@@ -22,6 +22,7 @@ public class Book {
     private String author;
 
     private long channelId;
+    private long classifyId;
 
     private String img;
 

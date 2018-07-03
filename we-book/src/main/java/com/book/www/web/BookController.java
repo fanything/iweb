@@ -1,6 +1,8 @@
 package com.book.www.web;
 
+import com.book.www.entity.Book;
 import com.book.www.service.BookService;
+import com.book.www.service.ChannelService;
 import com.iweb.context.page.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,9 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private ChannelService channelService;
+
     @GetMapping("/book/{bookId}")
     public Object details(@PathVariable("bookId")int bookId,Model model){
         model.addAttribute("book",bookService.detail(bookId));
@@ -35,7 +40,9 @@ public class BookController {
     @GetMapping("/node/{bookId}")
     public Object nodeList(@PathVariable("bookId")int bookId,Model model){
         model.addAttribute("page",bookService.nodeList(bookId,new Page(DEFAULT_CURRENT_PAGE,NODE_PAGE_SIZE)));
-        model.addAttribute("book",bookService.detail(bookId));
+        Book book = bookService.detail(bookId);
+        model.addAttribute("book",book);
+        model.addAttribute("channel",channelService.get(book.getChannelId()));
         return "nodelist";
     }
 
