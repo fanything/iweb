@@ -15,7 +15,7 @@
 <div id="app">
     <div id="header">
         <div class="readNav">
-            <span>当前位置：<a href="/">首页</a>><a href="/tongren/1/" th:text="${channel.name}">言情·女生</a>><a th:href="@{/book/{bookId}(bookId=${book.id})}" th:text="${book.name}"></a>> <em> 章节列表</em></span>
+            <span>当前位置：<a href="/">首页</a>><a href="/tongren/1/" th:text="${book.channelName}"></a>><a th:href="@{/book/{bookId}(bookId=${book.id})}" th:text="${book.name}"></a>> <em> 章节列表</em></span>
             <div class="search">
                 <div id="bdcs"></div>
             </div>
@@ -25,7 +25,7 @@
         <div class="title">
             <h1 th:text="${book.name}"></h1>
             <p class="info">
-                分类:<span><a href="javascript:;" >言情·女生</a></span>
+                分类:<span><a href="javascript:;" th:text="${book.channelName}"></a></span>
                 作者:<span><a href="javascript:;" th:text="${book.author}"></a></span>
             </p>
         </div>
@@ -38,6 +38,7 @@
         </div>
         <div class="jump ">
             <a id="before" href="javascript:;" >上一页</a>
+            <span><em th:text="${page.currentPage}"></em>/<em th:text="${page.pageCount}"></em></span>
             <a id="after" href="javascript:;" >下一页</a>
         </div>
 

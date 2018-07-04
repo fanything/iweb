@@ -35,11 +35,12 @@ public class BookService {
         List<Book> list = bookMapper.selectPage(pagination,new EntityWrapper<>(null));
 
         page.setList(list);
+        page.setPageCount(pagination.getPages());
         return page;
     }
 
-    public Book detail(int bookId) {
-        return bookMapper.selectById(bookId);
+    public Book get(int bookId) {
+        return bookMapper.getFull(bookId);
     }
 
     public Object nodeList(int bookId, Page page) {

@@ -10,4 +10,5 @@ import com.book.www.entity.Book;
  */
 public interface BookMapper extends BaseMapper<Book>{
 
+    Book getFull(final long id);
 }
