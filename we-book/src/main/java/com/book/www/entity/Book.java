@@ -35,4 +35,17 @@ public class Book {
 
     @TableField("height")
     private int imgHeight;
+
+    @TableField(exist = false)
+    private String channelName;
+
+    @TableField(exist = false)
+    private String classifyName;
+
+    public String getImg(){
+        if(this.img != null){
+            this.img += this.img.substring(this.img.lastIndexOf("/")+1);
+        }
+        return this.img;
+    }
 }

@@ -7,8 +7,8 @@
 <body>
 <p th:text="${book.name}"></p>
 <p th:text="${book.author}"></p>
-<p th:text="${book.intro}"></p>
-<p th:text="${book.img}"></p>
+<p th:utext="${book.intro}"></p>
+<img th:src="@{http://localhost/{imgurl}(imgurl=${book.img})}" th:width="${book.imgWidth}" th:height="${book.imgHeight}">
 <p><a th:href="@{/node/{bookId}(bookId=${book.id})}">全部章节</a></p>
 </table>
 </body>

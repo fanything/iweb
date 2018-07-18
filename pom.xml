@@ -13,6 +13,7 @@
         <module>iweb-context</module>
         <module>iweb-api</module>
         <module>we-book</module>
+        <module>we-script</module>
         <module>iweb-mq</module>
     </modules>
 

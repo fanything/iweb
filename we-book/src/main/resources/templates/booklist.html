@@ -3,31 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/css/pagination.css}"/>
-    <script type="type/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/chapter-list.css}"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 </head>
 <body>
-<ul th:each="book:${page.list}">
-    <li>
-        <a th:href="@{/book/{id}(id=${book.id})}" th:text="${book.name}">书名</a>
-    </li>
-</ul>
-<input id="totalData" type="hidden" th:value="${page.totalCount}">
-<div class="M-box2"></div>
+<input id="totalPage" type="hidden" th:value="${page.pageCount}">
+<input id="currentPage" type="hidden" th:value="${page.currentPage}">
+<div id="app">
+    <div id="header">
+        <div class="readNav">
+            <div class="search">
+                <div id="bdcs"></div>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <div id="chapterList">
+            <ul class="clear">
+                <li  th:each="book:${page.list}">
+                    <a th:href="@{/book/{id}(id=${book.id})}" th:text="${book.name}">书名</a>
+                </li>
+            </ul>
+        </div>
+        <div class="jump ">
+            <a id="before" href="javascript:;" >上一页</a>
+            <span><em th:text="${page.currentPage}"></em>/<em th:text="${page.pageCount}"></em></span>
+            <a id="after" href="javascript:;" >下一页</a>
+        </div>
+
+        <div id="layout"></div>
+        <div id="footer">
+            <div class="copyright">
+                <p>本站所有小说为转载作品，所有章节均由网友提供，转载至本站只是为了宣传本书让更多读者欣赏。</p>
+                <p>Copyright 2018 All Rights Reserved </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    (function(){
+        var totalPage = parseInt($("#totalPage").val());
+        var currentPage = parseInt($("#currentPage").val());
+        if(totalPage > 1 && currentPage < totalPage){
+            $("#after").attr("href","/book/list/p"+(currentPage+1));
+        }else{
+            $("#after").html("末页");
+        }
+
+        if(currentPage > 1){
+            $("#before").attr("href","/book/list/p"+(currentPage-1));
+        }else{
+            $("#before").html("首页");
+        }
+    })();
+</script>
 </body>
 </html>
-<script type="type/javascript">
-    $(function(){
-        $('.M-box2').pagination({
-            coping: true,
-            homePage: '首页',
-            endPage: '末页',
-            prevContent: '上页',
-            nextContent: '下页',
-            totalData: $("#totalData").val(),
-            callback: function (api) {
-                $(location).attr('href', '/book/list?currentPage='+api.getCurrent());
-            }
-        });
-    });
-</script>
