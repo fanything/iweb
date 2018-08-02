@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: iweb-mq
+  profiles:
+    active: dev
+server:
+  port: 8000
+
+log:
+  path: D:/test
+

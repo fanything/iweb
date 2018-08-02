@@ -15,6 +15,7 @@
         <module>we-book</module>
         <module>we-script</module>
         <module>iweb-mq</module>
+        <module>we-demo</module>
     </modules>
 
     <properties>

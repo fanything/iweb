@@ -1,6 +1,5 @@
 package com.we.script;
 
-import java.io.*;
 import java.nio.file.Files;
 
 public class AppMain {
